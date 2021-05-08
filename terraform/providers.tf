@@ -5,6 +5,13 @@ terraform {
       version = "~> 3.27"
     }
   }
+  backend "s3" {
+    bucket         = "raksit31667-terraform-state"
+    key            = "production"
+    region         = "ap-southeast-1"
+    dynamodb_table = "TerraformStateLock"
+    encrypt        = false
+  }
 }
 
 provider "aws" {
